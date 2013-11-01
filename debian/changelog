@@ -1,0 +1,5 @@
+openbox-menu (0.5.0-1) unstable; urgency=low
+
+  * Initial release. (Closes: #671862)
+
+ -- Mateusz Łukasik <mati75@linuxmint.pl>  Fri, 01 Nov 2013 14:17:43 +0100

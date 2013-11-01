@@ -1,0 +1,32 @@
+Description: Make makefile compatible with Debian's standards.
+Author: Mateusz Łukasik <mati75@linuxmint.pl>
+
+--- a/Makefile
++++ b/Makefile
+@@ -7,9 +7,9 @@ CC=gcc
+ CFLAGS+=-DWITH_ICONS
+ # Uncomment this line if Openbox can display SVG icons 
+ # Check SVG support with '$ ldd /usr/bin/openbox | grep svg', librsvg must appear..
+-# CFLAGS+=-DWITH_SVG
++CFLAGS+=-DWITH_SVG
+ 
+-prefix= /usr/local
++prefix= /usr
+ DESTDIR ?= $(prefix)
+ BINDIR= ${DESTDIR}/bin
+ 
+@@ -37,10 +37,10 @@ install:
+ doc:
+ 	robodoc --src . --doc doc/ --multidoc --index --html --cmode
+ 
+-check: openbox-menu
+-	./openbox-menu > test.xml 
+-	xmllint test.xml
+-	rm test.xml
++#check: openbox-menu
++#	./openbox-menu > test.xml 
++#	xmllint test.xml
++#	rm test.xml
+ 
+ changelog:
+ 	@hg log --style changelog > ChangeLog
