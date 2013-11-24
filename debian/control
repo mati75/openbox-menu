@@ -11,7 +11,7 @@ Vcs-Git: git://github.com/mati75/openbox-menu.git
 Package: openbox-menu
 Architecture: any
 Depends: ${misc:Depends}, ${shlibs:Depends}, openbox
-Description: openbox pipe-menu to display entries in *.desktop files
- openbox-menu is a pipemenu for the openbox window manager. It provides
- a dynamic menu listing of installed applications. Most of the work is 
+Description: Openbox pipe-menu to display entries in *.desktop files
+ Openbox-menu is a pipemenu for Openbox window manager. It provides
+ a dynamic menu listing installed applications. Most of the work is 
  done by the LXDE library menu-cache.
