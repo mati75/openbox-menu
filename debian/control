@@ -10,7 +10,8 @@ Vcs-Git: git://github.com/mati75/openbox-menu.git
 
 Package: openbox-menu
 Architecture: any
-Depends: ${misc:Depends}, ${shlibs:Depends}, openbox, lxmenu-data | gnome-menus | libgarcon-common
+Depends: ${misc:Depends}, ${shlibs:Depends}, openbox, 
+	lxmenu-data | gnome-menus | libgarcon-common | xdg-menu
 Description: Openbox pipe-menu to display entries in *.desktop files
  Openbox-menu is a pipemenu for Openbox window manager. It provides
  a dynamic menu listing installed applications. Most of the work is 
