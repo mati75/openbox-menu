@@ -1,6 +1,6 @@
 /*
- *      openbox-menu.h -  this file is part of openbox-menu
- *      Copyright (C) 2011,12 mimas <mimasgpc@free.fr>
+ *      openbox-menu.h - this file is part of openbox-menu
+ *      Copyright (C) 2010-13 mimas <mimasgpc@free.fr>
  *
  *      This program is free software; you can redistribute it and/or modify
  *      it under the terms of the GNU Lesser General Public License as published
@@ -17,12 +17,27 @@
  *      MA 02110-1301, USA.
  */
 
-#define VERSION "0.5.0"
+#ifndef __OPENBOXMENU_APP__
+#define __OPENBOXMENU_APP__
+#include <menu-cache.h>
 
+#define VERSION "0.5.1"
 #define APPMENU_SIZE 30
+#define TERMINAL_CMD "xterm -e"
 
-guint app_is_visible(MenuCacheApp *, guint32);
-gchar *get_item_icon_path (MenuCacheItem*);
+#ifndef __VERSION_MINOR // since menu-cache 0.5.0.
+#warning "If you are running a 0.3.x version of libmenu-cache, you need to compile the 3.6.7 version of openbox-menu"
+#endif
+
+typedef enum {
+	NO_ERROR = 0,
+	CONFIG_ERROR,
+	MENU_DIR_ERROR,
+	MENU_EMPTY_ERROR,
+	LOOKUP_ERROR,
+	MENU_CACHE_ERROR,
+} OBM_Error;
+
 
 typedef struct {
 	/* Configuration */
@@ -33,4 +48,17 @@ typedef struct {
 	gboolean  comment;      /* display description instead of name */
 	gboolean  sn;           /* startup notification */
 	gboolean  no_icons;     /* icons disabled */
+	gboolean  persistent;
+	gchar    *menu_file;
+	gchar    *template;
+	guint     code;
 } OB_Menu;
+
+guint app_is_visible (MenuCacheApp *, guint32);
+gchar *clean_exec (MenuCacheApp *);
+gchar *safe_name (const char *);
+gchar *item_icon_path (MenuCacheItem*);
+
+void menu_display (MenuCache *, OB_Menu *);
+
+#endif // __OPENBOXMENU_APP__
