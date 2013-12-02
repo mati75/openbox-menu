@@ -1,12 +1,14 @@
-openbox-menu (0.5.1-1) UNRELEASED; urgency=low
+openbox-menu (0.5.1-1) unstable; urgency=low
 
   * New upstream release.
   * debian/rules:
-    + Install binary to usr/bin.
+    + install binary to usr/bin.
+    + disable tests.
   * debian/control:
     + add depends to packages provides menu files.
+  * Refresh debian/patches/debian_build.patch.
 
- -- Mateusz Łukasik <mati75@linuxmint.pl>  Fri, 29 Nov 2013 21:54:43 +0100
+ -- Mateusz Łukasik <mati75@linuxmint.pl>  Sat, 30 Nov 2013 11:43:27 +0100
 
 openbox-menu (0.5.0-1) unstable; urgency=low
 

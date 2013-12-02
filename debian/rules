@@ -1,12 +1,11 @@
 #!/usr/bin/make -f
+export DEB_BUILD_OPTIONS=nocheck
 
 %:
 	dh  $@
 
-override_dh_install:
-	dh_install
-	mkdir debian/openbox-menu/usr
-	mv debian/openbox-menu/bin/ debian/openbox-menu/usr/bin/
+override_dh_auto_install:
+	$(MAKE) install BINDIR=$(CURDIR)/debian/openbox-menu/usr/bin
 
 override_dh_installman:
 	dh_installman
