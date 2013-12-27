@@ -1,3 +1,10 @@
+openbox-menu (0.5.1-2) unstable; urgency=high
+
+  * Add debian/patches/fix_missing_double_quote.patch from upstream
+    to fix XML parser error.
+
+ -- Mateusz Łukasik <mati75@linuxmint.pl>  Tue, 03 Dec 2013 09:13:30 +0100
+
 openbox-menu (0.5.1-1) unstable; urgency=low
 
   * New upstream release.

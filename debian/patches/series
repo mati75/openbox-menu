@@ -1,1 +1,2 @@
 debian_build.patch
+fix_missing_double_quote.patch
