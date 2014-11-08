@@ -51,7 +51,7 @@ safe_name (const char *name)
 				g_string_append (cmd, "&gt;");
 				break;
 			case '"':
-				g_string_append (cmd, "&quote;");
+				g_string_append (cmd, "&quot;");
 				break;
 			default:
 				g_string_append_c (cmd, *name);
@@ -81,6 +81,9 @@ clean_exec (MenuCacheApp *app)
 {
 	gchar *filepath = NULL;
 	const char *exec = menu_cache_app_get_exec (MENU_CACHE_APP(app));
+
+	g_return_val_if_fail(exec,"");
+		
 	GString *cmd = g_string_sized_new (64);
 
 	for (;*exec; ++exec)
