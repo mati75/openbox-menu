@@ -1,0 +1,35 @@
+openbox-menu (0.7.0-1) unstable; urgency=medium
+
+  * New upstream release.
+  * debian/control:
+    + Bump minimal menu-cache version to 0.7.
+    + Bump Standards-Version to 3.9.6. (no changes needed)
+  * Remove debian/patches/fix_missing_double_quote.patch -- included
+    upstream.
+
+ -- Mateusz Łukasik <mati75@linuxmint.pl>  Sun, 02 Nov 2014 11:05:44 +0100
+
+openbox-menu (0.5.1-2) unstable; urgency=high
+
+  * Add debian/patches/fix_missing_double_quote.patch from upstream
+    to fix XML parser error.
+
+ -- Mateusz Łukasik <mati75@linuxmint.pl>  Tue, 03 Dec 2013 09:13:30 +0100
+
+openbox-menu (0.5.1-1) unstable; urgency=low
+
+  * New upstream release.
+  * debian/rules:
+    + install binary to usr/bin.
+    + disable tests.
+  * debian/control:
+    + add depends to packages provides menu files.
+  * Refresh debian/patches/debian_build.patch.
+
+ -- Mateusz Łukasik <mati75@linuxmint.pl>  Sat, 30 Nov 2013 11:43:27 +0100
+
+openbox-menu (0.5.0-1) unstable; urgency=low
+
+  * Initial release. (Closes: #671862)
+
+ -- Mateusz Łukasik <mati75@linuxmint.pl>  Fri, 01 Nov 2013 14:17:43 +0100
