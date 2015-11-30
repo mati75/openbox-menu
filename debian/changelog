@@ -1,5 +1,6 @@
-openbox-menu (0.7.0-2) UNRELEASED; urgency=medium
+openbox-menu (0.8.0-1) UNRELEASED; urgency=medium
 
+  * New upstream release. (Closes: #797016, #797022, #797241)
   * Drop debian/source/options -- no longer needed.
   * debian/rules: Drop obsolete override_dh_builddeb.
   * debian/copyright: update dates.
