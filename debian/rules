@@ -1,6 +1,8 @@
 #!/usr/bin/make -f
 export DEB_BUILD_OPTIONS=nocheck
 
+export CPPFLAGS:=$(shell dpkg-buildflags --get CPPFLAGS)
+
 %:
 	dh  $@
 
