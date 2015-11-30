@@ -1,5 +1,5 @@
 //      utils.c - this file is part of openbox-menu
-//      Copyright (C) 2010-13 mimas <mimasgpc@free.fr>
+//      Copyright (C) 2010-15 Fabrice THIROUX <fabrice.thiroux@free.fr>
 //
 //      This program is free software; you can redistribute it and/or modify
 //      it under the terms of the GNU General Public License as published by
@@ -83,7 +83,7 @@ clean_exec (MenuCacheApp *app)
 	const char *exec = menu_cache_app_get_exec (MENU_CACHE_APP(app));
 
 	g_return_val_if_fail(exec,"");
-		
+
 	GString *cmd = g_string_sized_new (64);
 
 	for (;*exec; ++exec)
@@ -205,3 +205,25 @@ app_is_visible(MenuCacheApp *app, guint32 de_flag)
 	else
 		return menu_cache_app_get_is_visible(MENU_CACHE_APP(app), de_flag);
 }
+
+const char* get_desktop_name() {
+	const gchar *desktop = g_getenv ("XDG_CURRENT_DESKTOP");
+	if (desktop)
+		return desktop;
+
+	desktop = g_getenv ("DESKTOP_SESSION");
+	if (desktop)
+		return desktop;
+
+	// We return nothing.
+	return NULL;
+}
+
+void
+add_current_desktop_to_context (MenuCache *menu, OB_Menu *context) {
+	const char* desktop = get_desktop_name ();
+	if (desktop) {
+		context->show_flag |= menu_cache_get_desktop_env_flag(menu, desktop);
+	}
+}
+

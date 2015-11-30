@@ -1,6 +1,6 @@
 /*
  *      openbox-menu.h - this file is part of openbox-menu
- *      Copyright (C) 2010-13 mimas <mimasgpc@free.fr>
+ *      Copyright (C) 2010-15 Fabrice THIROUX <fabrice.thiroux@free.fr>
  *
  *      This program is free software; you can redistribute it and/or modify
  *      it under the terms of the GNU Lesser General Public License as published
@@ -21,7 +21,7 @@
 #define __OPENBOXMENU_APP__
 #include <menu-cache.h>
 
-#define VERSION "0.7.0"
+#define VERSION "0.8.0"
 #define APPMENU_SIZE 30
 #define TERMINAL_CMD "xterm -e"
 
@@ -58,6 +58,8 @@ guint app_is_visible (MenuCacheApp *, guint32);
 gchar *clean_exec (MenuCacheApp *);
 gchar *safe_name (const char *);
 gchar *item_icon_path (MenuCacheItem*);
+guint32 get_current_desktop_flag ();
+void add_current_desktop_to_context (MenuCache *, OB_Menu *);
 
 void menu_display (MenuCache *, OB_Menu *);
 

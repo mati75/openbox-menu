@@ -1,5 +1,5 @@
 //      openbox-menu - a dynamic menu for openbox
-//      Copyright (C) 2010-13 mimas <mimasgpc@free.fr>
+//      Copyright (C) 2010-15 Fabrice THIROUX <fabrice.thiroux@free.fr>
 //
 //      This program is free software; you can redistribute it and/or modify
 //      it under the terms of the GNU General Public License as published by
@@ -39,8 +39,7 @@ void sig_term_handler (int sig)
 	g_main_loop_quit (loop);
 }
 
-
-/****f* openbox-menu/get_application_menu
+/****f* openbox-menu/get_default_application_menu
  * FUNCTION
  *   Try to determine which menu file to use if none defined by user.
  *   XDG_MENU_PREFIX variable exists, it is used to prefix menu name.
@@ -49,14 +48,13 @@ void sig_term_handler (int sig)
  *    a char that need to be freed by caller.
  ****/
 gchar *
-get_application_menu (void)
+get_default_application_menu (void)
 {
 	gchar menu[APPMENU_SIZE];
 
 	gchar *xdg_prefix = getenv("XDG_MENU_PREFIX");
 	if (xdg_prefix)
 	{
-		g_warning ("XDG_MENU_PREFIX environment variable set, this could prevent the menu from loading. Unset it if an error happens");
 		g_snprintf (menu, APPMENU_SIZE, "%sapplications.menu", xdg_prefix);
 	}
 	else
@@ -64,7 +62,6 @@ get_application_menu (void)
 
 	return strdup (menu);
 }
-
 
 /****f* openbox-menu/check_application_menu
  * FUNCTION
@@ -113,27 +110,13 @@ configure (int argc, char **argv)
 	gboolean  show_kde = FALSE;
 	gboolean  show_xfce = FALSE;
 	gboolean  show_rox = FALSE;
+	gboolean  show_unknown = FALSE;
 	gboolean  no_icons = FALSE;
 	gchar    *template = NULL;
 	gboolean  sn = FALSE;
 	gchar    *output = NULL;
 	gchar   **app_menu = NULL;
 
-	/*
-	 * TODO: Registered OnlyShowIn Environments
-	 *  Ref: http://standards.freedesktop.org/menu-spec/latest/apb.html
-	 *
-	 * GNOME GNOME Desktop
-	 * KDE   KDE Desktop
-	 * LXDE  LXDE Desktop
-	 * MATE  MATÉ Desktop
-	 * Razor Razor-qt Desktop
-	 * ROX   ROX Desktop
-	 * TDE   Trinity Desktop
-	 * Unity Unity Shell
-	 * XFCE  XFCE Desktop
-	 * Old   Legacy menu systems
-	 */
 	GOptionEntry entries[] = {
 		{ "comment",   'c', 0, G_OPTION_ARG_NONE,   &comment,
 		  "Show generic name instead of application name", NULL },
@@ -147,6 +130,8 @@ configure (int argc, char **argv)
 		  "Show XFCE entries",  NULL },
 		{ "rox",       'r', 0, G_OPTION_ARG_NONE,   &show_rox,
 		  "Show ROX entries",   NULL },
+		{ "unknown",   'u', 0, G_OPTION_ARG_NONE,   &show_unknown,
+		  "Show Unknown deskstop entries",   NULL },
 		{ "persistent",'p', 0, G_OPTION_ARG_NONE,   &persistent,
 		  "stay active",        NULL },
 		{ "sn",        's', 0, G_OPTION_ARG_NONE,   &sn,
@@ -182,10 +167,14 @@ configure (int argc, char **argv)
 	else
 		context->output =  NULL;
 
-	if (show_gnome) context->show_flag |= SHOW_IN_GNOME;
-	if (show_kde)   context->show_flag |= SHOW_IN_KDE;
-	if (show_xfce)  context->show_flag |= SHOW_IN_XFCE;
-	if (show_rox)   context->show_flag |= SHOW_IN_ROX;
+	// We add extra desktop entries to display.
+	// Our current desktop is set when menu_cache has loaded its own cache.
+	// (likely in menu_display function).
+	if (show_gnome)   context->show_flag |= SHOW_IN_GNOME;
+	if (show_kde)     context->show_flag |= SHOW_IN_KDE;
+	if (show_xfce)    context->show_flag |= SHOW_IN_XFCE;
+	if (show_rox)     context->show_flag |= SHOW_IN_ROX;
+	if (show_unknown) context->show_flag |= 1 << N_KNOWN_DESKTOPS;
 
 	if (terminal_cmd)
 		context->terminal_cmd = terminal_cmd;
@@ -205,7 +194,7 @@ configure (int argc, char **argv)
 		context->persistent = TRUE;
 
 	if (!app_menu)
-		context->menu_file = get_application_menu ();
+		context->menu_file = get_default_application_menu();
 	else
 		context->menu_file = strdup (*app_menu);
 
@@ -222,6 +211,8 @@ run (OB_Menu *context)
 {
 	gpointer reload_notify_id = NULL;
 	MenuCache *menu_cache = NULL;
+
+	g_unsetenv("XDG_MENU_PREFIX"); // For unknow reason, it doesn't work when it is set.
 
 	if (context->persistent) /* persistent mode */
 	{
