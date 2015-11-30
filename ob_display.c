@@ -1,5 +1,5 @@
 //      ob_display.c - this file is part of openbox-menu
-//      Copyright (C) 2010-13 mimas <mimasgpc@free.fr>
+//      Copyright (C) 2010-15 Fabrice THIROUX <fabrice.thiroux@free.fr>
 //
 //      This program is free software; you can redistribute it and/or modify
 //      it under the terms of the GNU General Public License as published by
@@ -140,7 +140,7 @@ menu_generate (MenuCacheDir *dir, OB_Menu *context)
 				break;
 
 			case MENU_CACHE_TYPE_APP:
-				if (app_is_visible (MENU_CACHE_APP(l->data), 0))
+				if (app_is_visible (MENU_CACHE_APP(l->data), context->show_flag))
 					menu_application (l->data, context);
 		}
 }
@@ -207,6 +207,11 @@ menu_display (MenuCache *menu, OB_Menu *context)
 		context->code = MENU_DIR_ERROR;
 		return;
 	}
+
+	// Desktops are dynamically detected by menu_cache when reloading
+	// its cache. It is now time to add our desktop to the show_flag in
+	// the application context.
+	add_current_desktop_to_context (menu, context);
 
 	GSList *l = menu_cache_dir_get_children (dir);
 
