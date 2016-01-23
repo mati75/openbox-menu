@@ -3,11 +3,11 @@ Upstream-Name: openbox-menu
 Source: https://bitbucket.org/fabriceT/openbox-menu/downloads
 
 Files: *
-Copyright: 2012-2014, mimas <mimasgpc@free.fr>
+Copyright: 2012-2015, mimas <mimasgpc@free.fr>
 License: GPL-3+
 
 Files: debian/*
-Copyright: 2013-2015, Mateusz Łukasik <mati75@linuxmint.pl>
+Copyright: 2013-2016, Mateusz Łukasik <mati75@linuxmint.pl>
 License: GPL-3+
 
 License: GPL-3+
