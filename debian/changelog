@@ -1,4 +1,4 @@
-openbox-menu (0.8.0-1) UNRELEASED; urgency=medium
+openbox-menu (0.8.0-1) unstable; urgency=medium
 
   * New upstream release. (Closes: #797016, #797022, #797241)
   * Drop debian/source/options -- no longer needed.
@@ -6,8 +6,10 @@ openbox-menu (0.8.0-1) UNRELEASED; urgency=medium
     + Drop obsolete override_dh_builddeb.
     + Add CPPFLAGS for fix build build warning.
   * debian/copyright: update dates.
+  * debian/control:
+    + Bump Standards-Version to 3.9.7. (no changes needed)
 
- -- Mateusz Łukasik <mati75@linuxmint.pl>  Sat, 18 Apr 2015 11:46:58 +0200
+ -- Mateusz Łukasik <mati75@linuxmint.pl>  Sat, 23 Jan 2016 18:36:48 +0100
 
 openbox-menu (0.7.0-1) unstable; urgency=medium
 
