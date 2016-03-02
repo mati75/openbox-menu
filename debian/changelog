@@ -8,6 +8,7 @@ openbox-menu (0.8.0-1) unstable; urgency=medium
   * debian/copyright: update dates.
   * debian/control:
     + Bump Standards-Version to 3.9.7. (no changes needed)
+    + Use https on Vcs-Git.
 
  -- Mateusz Łukasik <mati75@linuxmint.pl>  Sat, 23 Jan 2016 18:36:48 +0100
 

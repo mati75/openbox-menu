@@ -6,7 +6,7 @@ Build-Depends: debhelper (>= 9), libgtk2.0-dev, libmenu-cache-dev (>= 0.7), libg
 Standards-Version: 3.9.7
 Homepage: https://bitbucket.org/fabriceT/openbox-menu
 Vcs-Browser: https://github.com/mati75/openbox-menu.git
-Vcs-Git: git://github.com/mati75/openbox-menu.git
+Vcs-Git: https://github.com/mati75/openbox-menu.git
 
 Package: openbox-menu
 Architecture: any
