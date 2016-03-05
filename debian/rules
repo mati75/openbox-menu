@@ -1,13 +1,9 @@
 #!/usr/bin/make -f
 export DEB_BUILD_OPTIONS=nocheck
-
-export CPPFLAGS:=$(shell dpkg-buildflags --get CPPFLAGS)
+export DEB_BUILD_MAINT_OPTIONS = hardening=+all
 
 %:
 	dh  $@
 
 override_dh_auto_install:
 	$(MAKE) install BINDIR=$(CURDIR)/debian/openbox-menu/usr/bin
-
-override_dh_installman:
-	dh_installman

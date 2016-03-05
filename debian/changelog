@@ -4,13 +4,14 @@ openbox-menu (0.8.0-1) unstable; urgency=medium
   * Drop debian/source/options -- no longer needed.
   * debian/rules:
     + Drop obsolete override_dh_builddeb.
-    + Add CPPFLAGS for fix build build warning.
+    + Use hardening=+all flags.
+    + Drop override_dh_installman.
   * debian/copyright: update dates.
   * debian/control:
     + Bump Standards-Version to 3.9.7. (no changes needed)
     + Use https on Vcs-Git.
 
- -- Mateusz Łukasik <mati75@linuxmint.pl>  Sat, 23 Jan 2016 18:36:48 +0100
+ -- Mateusz Łukasik <mati75@linuxmint.pl>  Wed, 02 Mar 2016 18:35:34 +0100
 
 openbox-menu (0.7.0-1) unstable; urgency=medium
 
