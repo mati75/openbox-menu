@@ -13,15 +13,6 @@ Last-Update: 2017-08-07
  CC=gcc
  #-DG_DISABLE_DEPRECATED
  
-@@ -7,7 +8,7 @@
- CFLAGS+=-DWITH_ICONS
- # Uncomment this line if Openbox can display SVG icons 
- # Check SVG support with '$ ldd /usr/bin/openbox | grep svg', librsvg must appear..
--# CFLAGS+=-DWITH_SVG
-+CFLAGS+=-DWITH_SVG
- 
- prefix= /usr/local
- DESTDIR ?= $(prefix)
 @@ -31,7 +32,6 @@
  	@rm -rf doc
  
