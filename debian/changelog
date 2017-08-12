@@ -5,6 +5,11 @@ openbox-menu (0.8.0-2) UNRELEASED; urgency=medium
     + Make pkg-config substitutable.
     + Do not strip during install.
 
+  [ Mateusz Łukasik ]
+  * debian/control:
+    + Bump Standards-Version to 4.0.1. (no changes needed)
+    + Bump dh version to 10.
+
  -- Helmut Grohne <helmut@subdivi.de>  Mon, 07 Aug 2017 19:37:41 +0200
 
 openbox-menu (0.8.0-1) unstable; urgency=medium
