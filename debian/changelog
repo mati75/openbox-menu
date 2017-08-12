@@ -1,4 +1,4 @@
-openbox-menu (0.8.0-2) UNRELEASED; urgency=medium
+openbox-menu (0.8.0+hg20161009-1) UNRELEASED; urgency=medium
 
   [ Helmut Grohne ]
   * Fix FTCBFS: (Closes: #871404)
@@ -6,6 +6,7 @@ openbox-menu (0.8.0-2) UNRELEASED; urgency=medium
     + Do not strip during install.
 
   [ Mateusz Łukasik ]
+  * Merge latest hg version.
   * debian/control:
     + Bump Standards-Version to 4.0.1. (no changes needed)
     + Bump dh version to 10.
