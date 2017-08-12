@@ -1,0 +1,3 @@
+Tests: simple
+Restrictions: allow-stderr isolation-container
+Depends: openbox, lxmenu-data

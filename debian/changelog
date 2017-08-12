@@ -1,4 +1,4 @@
-openbox-menu (0.8.0+hg20161009-1) UNRELEASED; urgency=medium
+openbox-menu (0.8.0+hg20161009-1) unstable; urgency=medium
 
   [ Helmut Grohne ]
   * Fix FTCBFS: (Closes: #871404)
@@ -12,8 +12,9 @@ openbox-menu (0.8.0+hg20161009-1) UNRELEASED; urgency=medium
     + Bump dh version to 10.
   * Update debian/rules.
   * Update debian/copyright.
+  * Add testsuite.
 
- -- Helmut Grohne <helmut@subdivi.de>  Mon, 07 Aug 2017 19:37:41 +0200
+ -- Mateusz Łukasik <mati75@linuxmint.pl>  Sat, 12 Aug 2017 21:27:47 +0200
 
 openbox-menu (0.8.0-1) unstable; urgency=medium
 
