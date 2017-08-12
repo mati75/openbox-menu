@@ -20,8 +20,33 @@
 	#include <gtk/gtk.h>
 #endif
 #include <string.h>
+#include <stdlib.h>
 
 #include "openbox-menu.h"
+
+/****f* utils/get_default_application_menu
+ * FUNCTION
+ *   Try to determine which menu file to use if none defined by user.
+ *   XDG_MENU_PREFIX variable exists, it is used to prefix menu name.
+ *
+ *  RETURN VALUE
+ *    a char that need to be freed by caller.
+ ****/
+gchar *
+get_default_application_menu (void)
+{
+	gchar menu[APPMENU_SIZE];
+
+	gchar *xdg_prefix = getenv("XDG_MENU_PREFIX");
+	if (xdg_prefix)
+	{
+		g_snprintf (menu, APPMENU_SIZE, "%sapplications.menu", xdg_prefix);
+	}
+	else
+		g_strlcpy (menu, "applications.menu", APPMENU_SIZE);
+
+	return strdup (menu);
+}
 
 /****f* utils/safe_name
  * FUNCTION
@@ -33,7 +58,8 @@
 gchar *
 safe_name (const char *name)
 {
-	g_return_val_if_fail (name != NULL, NULL);
+	if (name == NULL)
+		return NULL;
 
 	GString *cmd = g_string_sized_new (256);
 
@@ -82,7 +108,7 @@ clean_exec (MenuCacheApp *app)
 	gchar *filepath = NULL;
 	const char *exec = menu_cache_app_get_exec (MENU_CACHE_APP(app));
 
-	g_return_val_if_fail(exec,"");
+	g_return_val_if_fail(exec != NULL, NULL);
 
 	GString *cmd = g_string_sized_new (64);
 
