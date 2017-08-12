@@ -18,9 +18,6 @@
 #include <stdio.h>
 #include <glib.h>
 #include <glib/gi18n.h>
-#ifdef WITH_ICONS
-	#include <gtk/gtk.h>
-#endif
 #include <signal.h>
 #include <locale.h>
 #include <stdlib.h>
@@ -28,9 +25,6 @@
 #include "openbox-menu.h"
 
 GMainLoop *loop = NULL;
-#ifdef WITH_ICONS
-	GtkIconTheme *icon_theme;
-#endif
 
 /* from lxsession */
 void sig_term_handler (int sig)
@@ -39,29 +33,7 @@ void sig_term_handler (int sig)
 	g_main_loop_quit (loop);
 }
 
-/****f* openbox-menu/get_default_application_menu
- * FUNCTION
- *   Try to determine which menu file to use if none defined by user.
- *   XDG_MENU_PREFIX variable exists, it is used to prefix menu name.
- *
- *  RETURN VALUE
- *    a char that need to be freed by caller.
- ****/
-gchar *
-get_default_application_menu (void)
-{
-	gchar menu[APPMENU_SIZE];
 
-	gchar *xdg_prefix = getenv("XDG_MENU_PREFIX");
-	if (xdg_prefix)
-	{
-		g_snprintf (menu, APPMENU_SIZE, "%sapplications.menu", xdg_prefix);
-	}
-	else
-		g_strlcpy (menu, "applications.menu", APPMENU_SIZE);
-
-	return strdup (menu);
-}
 
 /****f* openbox-menu/check_application_menu
  * FUNCTION
@@ -160,7 +132,7 @@ configure (int argc, char **argv)
 		return NULL;
 	}
 
-	OB_Menu *context = g_slice_new0 (OB_Menu);
+	OB_Menu *context = context_new();
 
 	if (output)
 		context->output = g_build_filename (g_get_user_cache_dir (), output, NULL);
@@ -170,19 +142,15 @@ configure (int argc, char **argv)
 	// We add extra desktop entries to display.
 	// Our current desktop is set when menu_cache has loaded its own cache.
 	// (likely in menu_display function).
-	if (show_gnome)   context->show_flag |= SHOW_IN_GNOME;
-	if (show_kde)     context->show_flag |= SHOW_IN_KDE;
-	if (show_xfce)    context->show_flag |= SHOW_IN_XFCE;
-	if (show_rox)     context->show_flag |= SHOW_IN_ROX;
-	if (show_unknown) context->show_flag |= 1 << N_KNOWN_DESKTOPS;
+	if (show_gnome)   context_add_desktop_flag(context, SHOW_IN_GNOME);
+	if (show_kde)     context_add_desktop_flag(context, SHOW_IN_KDE);
+	if (show_xfce)    context_add_desktop_flag(context, SHOW_IN_XFCE);
+	if (show_rox)     context_add_desktop_flag(context, SHOW_IN_GNOME);
+	if (show_unknown) context_add_desktop_flag(context, 1 << N_KNOWN_DESKTOPS);
 
-	if (terminal_cmd)
-		context->terminal_cmd = terminal_cmd;
-	else
-		context->terminal_cmd = TERMINAL_CMD;
+	context_set_terminal_cmd (context, (terminal_cmd) ? terminal_cmd : TERMINAL_CMD);
 
-	if (comment)
-		context->comment = TRUE;
+	context_set_comment(context, comment);
 
 	if (sn)
 		context->sn = TRUE;
@@ -262,18 +230,6 @@ run (OB_Menu *context)
 	return context->code;
 }
 
-void
-context_free (OB_Menu *context)
-{
-	if (context->output)
-		g_free (context->output);
-
-	if (context->menu_file)
-		g_free (context->menu_file);
-
-	g_slice_free (OB_Menu, context);
-}
-
 
 int
 main (int argc, char **argv)
@@ -292,7 +248,7 @@ main (int argc, char **argv)
 
 	if (!check_application_menu (ob_context->menu_file))
 	{
-		g_print ("File %s doesn't exist. Can't create menu.\n", ob_context->menu_file);
+		g_print ("File $XDG_CONFIG_DIRS/%s doesn't exist. Can't create menu.\n", ob_context->menu_file);
 		return LOOKUP_ERROR;
 	}
 
