@@ -14,7 +14,7 @@ openbox-menu (0.8.0+hg20161009-1) unstable; urgency=medium
   * Update debian/copyright.
   * Add testsuite.
 
- -- Mateusz Łukasik <mati75@linuxmint.pl>  Sat, 12 Aug 2017 21:27:47 +0200
+ -- Mateusz Łukasik <mati75@linuxmint.pl>  Sat, 12 Aug 2017 21:30:08 +0200
 
 openbox-menu (0.8.0-1) unstable; urgency=medium
 
