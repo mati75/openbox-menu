@@ -2,11 +2,12 @@ Source: openbox-menu
 Section: x11
 Priority: optional
 Maintainer: Mateusz Łukasik <mati75@linuxmint.pl>
-Build-Depends: debhelper-compat (= 12), libgtk2.0-dev, libmenu-cache-dev (>= 0.7), libglib2.0-dev
+Build-Depends: debhelper (>= 10), libgtk2.0-dev, libmenu-cache-dev (>= 0.7), libglib2.0-dev
 Standards-Version: 4.0.1
 Homepage: https://bitbucket.org/fabriceT/openbox-menu
 Vcs-Browser: https://github.com/mati75/openbox-menu.git
 Vcs-Git: https://github.com/mati75/openbox-menu.git
+Testsuite: autopkgtest
 
 Package: openbox-menu
 Architecture: any

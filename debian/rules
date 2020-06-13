@@ -3,7 +3,7 @@ export DH_BUILD_MAINT_OPTIONS=nocheck
 export DEB_BUILD_MAINT_OPTIONS = hardening=+all
 
 %:
-	dh $@
+	dh  $@
 
 override_dh_auto_install:
 	$(MAKE) install BINDIR=$(CURDIR)/debian/openbox-menu/usr/bin
