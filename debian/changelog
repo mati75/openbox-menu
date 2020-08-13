@@ -1,11 +1,15 @@
 openbox-menu (0.8.0+hg20161009-2) UNRELEASED; urgency=medium
 
+  [ Helmut Grohne ]
+  * Fix FTCBFS: Don't run tests during dh_auto_build. (Closes: #878370)
+
   [ Mateusz Łukasik ]
   * Acknowledge NMU, thanks to Adrian Bunk.
   * Fix FTBFS with gcc-10. (Closes: #957633)
-
-  [ Helmut Grohne ]
-  * Fix FTCBFS: Don't run tests during dh_auto_build. (Closes: #878370)
+  * debian/control:
+    + Bump Standards-Version to 4.5.0
+    + Bump dh version to 13.
+  * debian/copyright: Welcome 2020.
 
  -- Mateusz Łukasik <mati75@linuxmint.pl>  Thu, 13 Aug 2020 15:53:31 +0200
 
