@@ -1,8 +1,8 @@
-openbox-menu (0.8.0+hg20161009-3) UNRELEASED; urgency=medium
+openbox-menu (0.8.0+hg20161009-3) unstable; urgency=medium
 
   * Fix test running.
 
- -- Mateusz Łukasik <mati75@linuxmint.pl>  Fri, 15 Jan 2021 10:24:39 +0100
+ -- Mateusz Łukasik <mati75@linuxmint.pl>  Sat, 16 Jan 2021 21:00:23 +0100
 
 openbox-menu (0.8.0+hg20161009-2) unstable; urgency=medium
 
