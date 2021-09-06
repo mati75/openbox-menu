@@ -7,7 +7,6 @@ Standards-Version: 4.5.0
 Homepage: https://bitbucket.org/fabriceT/openbox-menu
 Vcs-Browser: https://github.com/mati75/openbox-menu.git
 Vcs-Git: https://github.com/mati75/openbox-menu.git
-Testsuite: autopkgtest
 
 Package: openbox-menu
 Architecture: any

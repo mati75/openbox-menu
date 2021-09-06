@@ -1,3 +1,9 @@
+openbox-menu (0.8.0+hg20161009-4) UNRELEASED; urgency=medium
+
+  * Remove unnecessary 'Testsuite: autopkgtest' header.
+
+ -- Debian Janitor <janitor@jelmer.uk>  Mon, 06 Sep 2021 12:03:30 -0000
+
 openbox-menu (0.8.0+hg20161009-3) unstable; urgency=medium
 
   * Fix test running.
