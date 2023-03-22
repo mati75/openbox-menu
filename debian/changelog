@@ -9,10 +9,12 @@ openbox-menu (0.8.1-1) UNRELEASED; urgency=medium
     + Build-Depends: Drop versioned constraint on libmenu-cache-dev.
 
   [ Mateusz Łukasik ]
-  * New upstream release.
-  * Add cherry-pick from upstream for use GTK3. (Closes: #967668)
+  * New upstream release. (Closes: #1020614)
+  * Add cherry-pick from upstream to use GTK3. (Closes: #967668)
   * d/control: Update homepage and dates.
   * d/copyright: Update homepage.
+  * d/watch: Update to github.
+  * Bump Standards-Version to 4.6.2.
 
  -- Debian Janitor <janitor@jelmer.uk>  Mon, 06 Sep 2021 12:03:30 -0000
 
