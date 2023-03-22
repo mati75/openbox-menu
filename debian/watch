@@ -1,2 +1,4 @@
-version=3
-https://bitbucket.org/fabriceT/openbox-menu/downloads/openbox-menu-([\d.]+).tar.bz2
+version=4
+
+opts=filenamemangle=s/.+\/v?(\d\S*)\.tar\.gz/openbox-menu-$1\.tar\.gz/ \
+  https://github.com/fabriceT/openbox-menu/tags .*/v?(\d\S*)\.tar\.gz
