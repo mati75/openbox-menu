@@ -1,11 +1,15 @@
-openbox-menu (0.8.0+hg20161009-4) UNRELEASED; urgency=medium
+openbox-menu (0.8.1-1) UNRELEASED; urgency=medium
 
+  [ Debian Janitor ]
   * Remove unnecessary 'Testsuite: autopkgtest' header.
   * Set upstream metadata fields: Bug-Database, Bug-Submit, Repository,
     Repository-Browse.
   * Update standards version to 4.5.1, no changes needed.
   * Remove constraints unnecessary since buster:
     + Build-Depends: Drop versioned constraint on libmenu-cache-dev.
+
+  [ Mateusz Łukasik ]
+  * New upstream release.
 
  -- Debian Janitor <janitor@jelmer.uk>  Mon, 06 Sep 2021 12:03:30 -0000
 
