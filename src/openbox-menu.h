@@ -25,7 +25,7 @@
 	#include <gtk/gtk.h>
 #endif
 
-#define VERSION "0.8.0"
+#define VERSION "0.8.1"
 #define APPMENU_SIZE 30
 #define TERMINAL_CMD "xterm -e"
 
@@ -81,9 +81,5 @@ void   context_set_comment (OB_Menu*, gboolean);
 gboolean context_get_persistent (OB_Menu*);
 
 void context_free(OB_Menu *);
-
-#ifdef WITH_ICONS
-	GtkIconTheme *icon_theme;
-#endif
 
 #endif // __OPENBOXMENU_APP__
