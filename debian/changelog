@@ -11,6 +11,8 @@ openbox-menu (0.8.1-1) UNRELEASED; urgency=medium
   [ Mateusz Łukasik ]
   * New upstream release.
   * Add cherry-pick from upstream for use GTK3. (Closes: #967668)
+  * d/control: Update homepage and dates.
+  * d/copyright: Update homepage.
 
  -- Debian Janitor <janitor@jelmer.uk>  Mon, 06 Sep 2021 12:03:30 -0000
 
