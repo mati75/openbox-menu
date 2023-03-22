@@ -10,8 +10,16 @@ openbox-menu (0.8.1-1) UNRELEASED; urgency=medium
 
   [ Mateusz Łukasik ]
   * New upstream release.
+  * Add cherry-pick from upstream for use GTK3. (Closes: #967668)
 
  -- Debian Janitor <janitor@jelmer.uk>  Mon, 06 Sep 2021 12:03:30 -0000
+
+openbox-menu (0.8.0+hg20161009-3.1) unstable; urgency=medium
+
+  * Non-maintainer upload.
+  * Disable the autopkgtest for now. (Closes: #960717)
+
+ -- Adrian Bunk <bunk@debian.org>  Fri, 05 Feb 2021 16:28:18 +0200
 
 openbox-menu (0.8.0+hg20161009-3) unstable; urgency=medium
 

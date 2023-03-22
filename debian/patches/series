@@ -1,2 +1,2 @@
+gtk3.patch
 debian_build.patch
-fix-ftbfs-gcc-10.patch
